@@ -1,0 +1,136 @@
+﻿
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Database_201_721</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Database_201_721.styles.css" asp-append-version="true" />
+</head>
+
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Database_201_721</a>
+                }
+                @if (!User.Identity.IsAuthenticated)
+                {
+                    <a class="navbar-brand" asp-area="" asp-controller="Account" asp-action="Login">Database_201_721</a>
+                }
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
+                {
+                    <ul class="navbar-nav flex-grow-1">
+                         <li class="nav-item"> 
+                            <a class="nav-link text-dark" asp-area="" asp-controller="UserManage" asp-action="Index">UserManage</a>
+                        </li>
+                        <li class="nav-item"> 
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Roles" asp-action="Index">Roles</a>
+                        </li>
+                        <li class="nav-item"> 
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Group" asp-action="GroupList">Groups</a>
+                        </li>            
+                        
+                    </ul>
+
+                    <form class="nav-item" method="post" asp-controller="Account" asp-action="Logout">
+                                 <input type="submit" value="Выход" />
+                    </form>
+                }   
+  
+                    
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container-fluid">
+
+        <div class="row">
+            @if (User.Identity.IsAuthenticated && User.IsInRole("student"))
+            {
+                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                    <div class="position-sticky pt-3">
+
+                        <ul class="nav flex-column">
+
+                          <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" asp-controller = "User" asp-action = "AboutMe" asp-route-email = "@User.Identity.Name">
+                               Личный кабинет 
+                            </a>
+                          </li>
+
+                           <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" asp-controller = "User" asp-action = "ChangeInformationAboutMe" asp-route-email = "@User.Identity.Name">
+                               Изменить информацию о себе 
+                            </a>
+                          </li>
+
+                           <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" asp-controller = "User" asp-action = "StudentsInGroup" asp-route-email = "@User.Identity.Name">
+                               Группа
+                            </a>
+                          </li>
+
+                          <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" asp-controller = "User" asp-action = "EmptyBlank">
+                               Бланки заявлений
+                            </a>
+                          </li>
+                          <li class="nav-item">
+                            <form method="post" asp-controller="Account" asp-action="Logout">
+                                   <input class="mt-3 nav-link active" type="submit" value="Выход" />
+                            </form>
+                          </li>
+                        </ul>
+
+                    </div>
+                </nav>
+            }
+          <main class="ms-sm-auto col-lg-10 px-md-4">
+
+              <div class="chartjs-size-monitor">
+                  <div class="chartjs-size-monitor-expand">
+                      <div class=""></div>
+                  </div>
+                  <div class="chartjs-size-monitor-shrink">
+                       <div class=""></div>
+                  </div>
+               </div>
+
+            <div>
+              @RenderBody()
+            </div>
+
+          </main>
+
+        </div>
+
+    </div>
+
+
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>
+
+

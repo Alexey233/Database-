@@ -1,0 +1,16 @@
+﻿@model Database_201_721.Models.User
+ 
+
+<form asp-action="ChangeRequeist" method="post">
+
+    <input type="hidden" asp-for="Id" value="@Model.Id" />
+
+
+    <div class="form-group">
+        <label class="control-label mb-4 h3">Пользователь @Model.FirstName @Model.LastName отправил запрос на изменение </label>
+        <br>
+        <label class="control-label mb-3">Изменить год рождения с <span class = "text-danger">@Model.Year</span> на <span class = "text-danger">@Model.ChangeRequestYear</span> </label>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Подтвердить изменения</button>
+</form>

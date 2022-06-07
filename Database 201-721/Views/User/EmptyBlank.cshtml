@@ -1,0 +1,16 @@
+﻿@model Database_201_721.Models.EmptyBlank;
+
+<h2>Список шаблонов для заявления</h2>
+<div class="my-3 p-3 rounded w-50 fs-4">
+    @foreach (var blank in @Model.Url)
+    {
+        <div class="d-flex text-muted pt-3">
+          <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+            <a class="nav-link active" href = "@blank.Value">
+                @blank.Key
+            </a>
+          </div>
+        </div>
+    }
+
+  </div>

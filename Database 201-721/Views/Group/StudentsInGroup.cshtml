@@ -1,0 +1,14 @@
+﻿@model Database_201_721.ViewModels.GroupAndStudentsViewModel
+
+<h2>Список студентов в группе</h2>
+<table class="table">
+    @foreach (var user in Model.Users)
+    {
+        <tr>
+            <td> @user.Email </td>
+        </tr>
+    }
+</table>
+
+
+

@@ -1,0 +1,16 @@
+﻿@model Database_201_721.Models.User
+ 
+
+<h2>Данную информацию о себе вы не можете изменить без проверки администратором</h2>
+
+<form asp-action="ChangeInformationAboutMe" method="post">
+
+    <input type="hidden" asp-for="Id" value="@Model.Id" />
+
+    <div class="form-group">
+        <label asp-for="ChangeRequestYear" class="control-label">Изменить вашу дату рождения(на данный момент @Model.Year)</label>
+        <input type="text" asp-for="ChangeRequestYear" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Отправить запрос на изменение</button>
+</form>
