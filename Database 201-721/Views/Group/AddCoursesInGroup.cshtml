@@ -1,0 +1,20 @@
+﻿@model Database_201_721.ViewModels.GroupAndCourseViewModel
+
+<h2>Добавление предметов в выбранную группу</h2>
+
+<table class="table mb-3">    
+    <form asp-action="AddCoursesInGroup" method="post"> 
+     
+        @foreach(var course in Model.Courses)
+        {
+           
+            <tr>            
+                <td>@course.CourseName</td>
+                <td>
+                </td>
+                <td class = "btn btn-primary"><p>@Html.ActionLink("Добавить", "AddCourseInGroup", "Group", new { courseId = @course.Id, groupId= @Model.Group.Id})</p></td>
+            </tr>
+             
+        }
+    </form>
+</table>
