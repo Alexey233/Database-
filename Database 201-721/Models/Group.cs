@@ -6,7 +6,9 @@
         public string GroupName { get; set; }
 
 
-        public List<User> Users { get; set; }   
+        public List<User> Users { get; set; }
 
+
+        public List<Course> Courses { get; set; } = new List<Course>();
     }
 }

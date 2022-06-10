@@ -122,36 +122,33 @@ namespace Database_201_721.Controllers
         [HttpPost]
         public async Task<IActionResult> AddOrEditGroup(EditUserViewModel model)
         {
-            if (ModelState.IsValid)
+            User user = await _userManager.FindByIdAsync(model.Id);
+            if (user != null)
             {
-                User user = await _userManager.FindByIdAsync(model.Id);
-                if (user != null)
+                var group = _applicationContext.Groups.FirstOrDefault(x => x.Id == model.GroupId);
+
+                user.Group = group;
+                if (group.Users == null)
                 {
-                    var group = _applicationContext.Groups.FirstOrDefault(x => x.Id == model.GroupId);
+                    List<User> users = new List<User>();
+                    users.Add(user);
+                    group.Users = users;
+                }
+                else
+                {
+                    group.Users.Add(user);
+                }
 
-                    user.Group = group;
-                    if (group.Users == null)
+                var result = await _userManager.UpdateAsync(user);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index");
+                }
+                else 
+                {
+                    foreach (var error in result.Errors)
                     {
-                        List<User> users = new List<User>();
-                        users.Add(user);
-                        group.Users = users;
-                    }
-                    else
-                    {
-                        group.Users.Add(user);
-                    }
-
-                    var result = await _userManager.UpdateAsync(user);
-                    if (result.Succeeded)
-                    {
-                        return RedirectToAction("Index");
-                    }
-                    else
-                    {
-                        foreach (var error in result.Errors)
-                        {
-                            ModelState.AddModelError(string.Empty, error.Description);
-                        }
+                        ModelState.AddModelError(string.Empty, error.Description);
                     }
                 }
             }

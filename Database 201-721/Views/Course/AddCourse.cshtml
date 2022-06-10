@@ -1,0 +1,10 @@
+﻿@model Database_201_721.ViewModels.CourseViewModel
+
+
+<form asp-action="AddCourse" method="post">
+    <div class="form-group" style = "width:250px">
+        <label for="CourseName">Название курса</label>
+        <input name="CourseName" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Добавить</button>
+</form>

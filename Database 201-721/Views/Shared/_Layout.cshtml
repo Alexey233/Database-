@@ -36,15 +36,17 @@
                 {
                     <ul class="navbar-nav flex-grow-1">
                          <li class="nav-item"> 
-                            <a class="nav-link text-dark" asp-area="" asp-controller="UserManage" asp-action="Index">UserManage</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="UserManage" asp-action="Index">Пользователи</a>
                         </li>
                         <li class="nav-item"> 
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Roles" asp-action="Index">Roles</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Roles" asp-action="Index">Роли</a>
                         </li>
                         <li class="nav-item"> 
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Group" asp-action="GroupList">Groups</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Group" asp-action="GroupList">Группы</a>
                         </li>            
-                        
+                        <li class="nav-item"> 
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Course" asp-action="CourseList">Курсы</a>
+                        </li>  
                     </ul>
 
                     <form class="nav-item" method="post" asp-controller="Account" asp-action="Logout">

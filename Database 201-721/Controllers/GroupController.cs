@@ -72,5 +72,12 @@ namespace Database_201_721.Controllers
             };
             return View(allStudentsAndGroup);
         }
+
+        public IActionResult ListCoursesInGroupe(int id)
+        {
+            return View();
+        }
+
+        
     }
 }
