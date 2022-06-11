@@ -7,6 +7,10 @@
         <tr>
             <td> @course.CourseName </td>
         </tr>
+
+        <tr>
+        <td class = "btn btn-primary"><p>@Html.ActionLink("Удалить курс из группы", "DeleteCourse", "Group", new { courseId = @course.Id, groupId= @Model.Group.Id})</p></td>
+        </tr>
     }
 </table>
 

@@ -118,6 +118,20 @@ namespace Database_201_721.Controllers
             return RedirectToAction("ListCoursesInGroupe", "Group", new { id = group.Id });
         }
 
+        public IActionResult DeleteCourse(int courseId, int groupId)
+        {
+            var allGroup = _applicationContext.Groups.Include(c => c.Courses).ToList();
+            var group = allGroup.FirstOrDefault(x => x.Id == groupId);
 
+            group.Courses.Remove(group.Courses.FirstOrDefault(x=>x.Id == courseId));
+
+            _applicationContext.Groups.Update(group);
+
+
+            _applicationContext.SaveChanges();
+            return RedirectToAction("ListCoursesInGroupe", "Group", new { id = group.Id });
+        }
+
+        
     }
 }
