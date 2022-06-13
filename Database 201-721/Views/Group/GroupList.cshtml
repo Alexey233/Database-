@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<Database_201_721.Models.Group>
  
-<h2 class = "mb=4">Список групп</h2>
+<h2 class = "mb-4">Список групп</h2>
 
 <table class="table">
     @foreach (var group in Model)
@@ -8,18 +8,18 @@
         <tr>
             <td>@group.GroupName</td>
             <td>
-                <a class="btn btn-sm btn-primary mr-5" asp-action="StudentsInGroup" asp-route-Id = "@group.Id">Студенты в группе</a> 
-                <a class="btn btn-sm btn-primary mr-5" asp-action="ListCoursesInGroupe" asp-route-Id = "@group.Id">Курсы в группе</a> 
+                <a class="btn btn-sm btn-info mr-5" asp-action="StudentsInGroup" asp-route-Id = "@group.Id">Студенты в группе</a> 
+                <a class="btn btn-sm btn-info mr-5" asp-action="ListCoursesInGroupe" asp-route-Id = "@group.Id">Курсы в группе</a> 
             </td>
             <td>
                 <a class="btn btn-sm btn-primary mr-5" asp-action="Edit" asp-route-Id = "@group.Id">Редактировать</a>    
-                <a class="btn btn-sm btn-primary" asp-action="Delete" asp-route-Id = "@group.Id">Удалить</a>
+                <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-Id = "@group.Id">Удалить</a>
             </td>
         </tr>
     }
 </table>
 
 
-<a asp-action="Create">Добавить группу</a>
+<a class = "btn btn-primary mt-3" asp-action="Create">Добавить группу</a>
 
 

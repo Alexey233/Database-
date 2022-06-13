@@ -64,11 +64,14 @@ namespace Database_201_721.Controllers
 
         public IActionResult Delete(int id)
         {
-            Group forDelete = _applicationContext.Groups.Find(id);
-
-            _applicationContext.Groups.Remove(forDelete);
+            Course forDelete = _applicationContext.Courses.Find(id);
+            
+            if (forDelete != null)
+            {
+                _applicationContext.Courses.Remove(forDelete);
+            }
+            
             _applicationContext.SaveChanges();
-
 
             return RedirectToAction("CourseList");
         }

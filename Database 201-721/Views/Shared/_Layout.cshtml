@@ -89,13 +89,19 @@
                           </li>
 
                           <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" asp-controller = "User" asp-action = "CourseList" asp-route-email = "@User.Identity.Name">
+                               Курсы
+                            </a>
+                          </li>
+
+                          <li class="nav-item">
                             <a class="nav-link active" aria-current="page" asp-controller = "User" asp-action = "EmptyBlank">
                                Бланки заявлений
                             </a>
                           </li>
-                          <li class="nav-item">
+                          <li class="mt-5 nav-item">
                             <form method="post" asp-controller="Account" asp-action="Logout">
-                                   <input class="mt-3 nav-link active" type="submit" value="Выход" />
+                                   <input class=" nav-link active" type="submit" value="Выход" />
                             </form>
                           </li>
                         </ul>

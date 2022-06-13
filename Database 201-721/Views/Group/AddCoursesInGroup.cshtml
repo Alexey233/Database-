@@ -12,7 +12,7 @@
                 <td>@course.CourseName</td>
                 <td>
                 </td>
-                <td class = "btn btn-primary"><p>@Html.ActionLink("Добавить", "AddCourseInGroup", "Group", new { courseId = @course.Id, groupId= @Model.Group.Id})</p></td>
+                <td><p>@Html.ActionLink("Добавить", "AddCourseInGroup", "Group", new { courseId = @course.Id, groupId= @Model.Group.Id})</p></td>
             </tr>
              
         }

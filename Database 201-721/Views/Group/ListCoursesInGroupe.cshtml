@@ -1,20 +1,18 @@
 ﻿@model Database_201_721.ViewModels.GroupAndCourseViewModel
 
-<h2>Список предметов в группе</h2>
+<h3 class = "mb-3">Список предметов в группе</h3>
 <table class="table">
     @foreach (var course in @Model.Courses)
     {
         <tr>
             <td> @course.CourseName </td>
-        </tr>
 
-        <tr>
-        <td class = "btn btn-primary"><p>@Html.ActionLink("Удалить курс из группы", "DeleteCourse", "Group", new { courseId = @course.Id, groupId= @Model.Group.Id})</p></td>
+            <td><p>@Html.ActionLink("Удалить курс из группы", "DeleteCourse", "Group", new { courseId = @course.Id, groupId= @Model.Group.Id})</p></td>
         </tr>
     }
 </table>
 
-<a asp-action="AddCoursesInGroup" asp-route-id = "@Model.Group.Id">Добавить курсы в группу</a>
+<a class = "btn btn-primary" asp-action="AddCoursesInGroup" asp-route-id = "@Model.Group.Id">Добавить курсы в группу</a>
 
 
 

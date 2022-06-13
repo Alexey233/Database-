@@ -4,10 +4,10 @@
 @model IEnumerable<Database_201_721.Models.User>
 
 
-<a class = "btn btn-sm btn-primary" asp-action="Create">Добавить пользователя</a>
+<a class = "btn btn-primary mb-3" asp-action="Create">Добавить пользователя</a>
 
 <table class="table">
-    <tr><th>Email</th><th>Год</th><th></th></tr>
+    <tr class = "mb-2 h4"><th>Email</th><th>Год</th><th></th></tr>
     @foreach (var user in Model)
     {
         <tr>
@@ -21,13 +21,16 @@
                     <a class="btn btn-danger btn-sm" asp-action="ChangeRequeist" asp-route-id="@user.Id">Пользователь отправил запрос на изменение</a>
                 }
             </td>
+            
+            <td>
+                <a class="btn btn-sm btn-info px-2" asp-action="Edit" asp-route-id="@user.Id">Изменить данные о пользователе</a>
+                <a class="btn btn-sm btn-info " asp-action="AddOrEditGroup" asp-route-id="@user.Id">Изменить/Добавить группу</a>
+            </td>
 
             <td> 
                  
  
-                <form asp-action="Delete" asp-route-id="@user.Id" method="post">
-                    <a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-id="@user.Id">Изменить данные о пользователе</a>
-                    <a class="btn btn-sm btn-primary" asp-action="AddOrEditGroup" asp-route-id="@user.Id">Изменить/Добавить группу</a>
+                <form asp-action="Delete" asp-route-id="@user.Id" method="post">    
                     <button type="submit" class="btn btn-sm btn-danger">
                         Удалить
                     </button>

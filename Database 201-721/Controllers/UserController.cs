@@ -2,6 +2,7 @@
 using Database_201_721.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 
 namespace Database_201_721.Controllers
@@ -66,7 +67,17 @@ namespace Database_201_721.Controllers
             return RedirectToAction("AboutMe", "User", new { email = userEmail });
         }
 
-        
+        public IActionResult CourseList(string email)
+        {
+            var user = _applicationContext.Users.FirstOrDefault(u => u.Email == email);
+
+            var allGroup = _applicationContext.Groups.Include(c => c.Courses).ToList();
+            var group = allGroup.FirstOrDefault(x => x.Id == user.GroupId);
+
+            var coursesList = new GroupAndCourseViewModel { Courses = group.Courses, Group = group };
+
+            return View(coursesList);
+        }
 
     }
 }

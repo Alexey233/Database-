@@ -1,0 +1,11 @@
+﻿@model Database_201_721.ViewModels.GroupAndCourseViewModel
+
+<h2 class = "mb-3">Список ваших предметов</h2>
+<table class="table">
+    @foreach (var course in @Model.Courses)
+    {
+        <tr>
+            <td class = "fs-4"> @course.CourseName </td>
+        </tr>
+    }
+</table>

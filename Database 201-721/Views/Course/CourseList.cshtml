@@ -2,25 +2,22 @@
     ViewData["Title"] = "Home Page";
 }
 @model List<Database_201_721.Models.Course>
+    
 
-
-<a class = "btn btn-sm btn-primary" asp-action="AddCourse">Добавить новый курс</a>
-
+<a class = "btn btn-primary  mb-4" asp-action="AddCourse">Добавить новый курс</a>
+<h3 class = "mb-2">Название курсов</h3>
 <table class="table">
-    <tr><th>Название</th></tr>
+
     @foreach (var course in Model)
     {
         <tr>
             <td>@course.CourseName</td> 
 
             <td>             
-                <form asp-action="Delete" asp-route-id="@course.Id" method="post">
-                    <a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-id="@course.Id">Изменить данные о курсе</a>
-                    <a class="btn btn-sm btn-primary" asp-action="Delete" asp-route-Id = "@course.Id">Удалить</a>
-                    <button type="submit" class="btn btn-sm btn-danger">
-                        Удалить
-                    </button>
-                </form>
+                <a class="btn btn-sm btn-info" asp-action="Edit" asp-route-id="@course.Id">Изменить данные о курсе</a>
+            </td>
+            <td>             
+                <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@course.Id">Удалить</a>
             </td>
         </tr>
     }
